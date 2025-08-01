@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  
+  name: app-deployment
+spec:
+  replicas: 3
+  imagePullSecrets:
+          - app-secret
+  selector:
+    matchLabels:
+      app: app-deployment
+      tier: frontend
+
+  template:
+    metadata:
+      
+      labels:
+        app: app-deployment
+        tier: frontend
+    spec:
+      containers:
+      - image: acregistyprod001.azurecr.io/myapp
+        name: myapp
+        ports:
+          - containerPort: 80
+        resources:
+          requests:
+            cpu: 50m
+            memory: "64Mi"
+          limits:
+            cpu: 100m
+            memory: 128Mi
+        
+  
+    
+
+      
+status: {}

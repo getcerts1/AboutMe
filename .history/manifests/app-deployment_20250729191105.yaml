@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  name: app-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: app-deployment
+      tier: frontend
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: app-deployment
+        tier: frontend
+    spec:
+      containers:
+      - image: acregistyprod001.azurecr.io/myapp
+        name: myapp
+        resources: {}
+
+      
+status: {}
